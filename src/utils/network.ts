@@ -1,5 +1,3 @@
-// original get from: https://github.com/letscode-dev/react-star-wars/blob/master/src/utils/network.js
-
 export const getApiResource = async (url: string) => {
   try {
     const res = await fetch(url);

@@ -1,43 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export interface SearchProps {
   initialValue: string | null;
   saveValue: (value: string) => void;
   handleClickProp?: (value: string) => null;
-  handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => null;
   children?: React.ReactNode;
 }
 
-class Search extends React.Component<SearchProps, { inputValue: string }> {
-  constructor(props: SearchProps) {
-    super(props);
-    this.state = { inputValue: this.props.initialValue || '' };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+const Search = ({ initialValue, saveValue, handleClickProp }: SearchProps) => {
+  const [inputValue, setInputValue] = useState(initialValue || '');
 
-  render() {
-    const { inputValue } = this.state;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
 
-    return (
-      <div>
-        <input type="text" value={inputValue} onChange={this.handleChange} />
-        <button onClick={this.handleClick}>Search</button>
-      </div>
-    );
-  }
+  const handleClick = () => {
+    saveValue(inputValue.trim());
+    handleClickProp?.(inputValue.trim());
+  };
 
-  handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      inputValue: event.target.value,
-    });
-  }
-
-  handleClick() {
-    const { inputValue } = this.state;
-    this.props.saveValue(inputValue.trim());
-    this.props.handleClickProp?.(inputValue.trim());
-  }
-}
+  return (
+    <div>
+      <input type="text" value={inputValue} onChange={handleChange} />
+      <button onClick={handleClick}>Search</button>
+    </div>
+  );
+};
 
 export default Search;

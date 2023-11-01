@@ -1,5 +1,3 @@
-// original get from: https://github.com/letscode-dev/react-star-wars/blob/master/src/constants/api.js
-
 // common
 export const HTTPS = 'https://';
 

@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ErrorQueryButton extends Component<
-  { handleClick: React.MouseEventHandler; error: string },
-  NonNullable<unknown>
-> {
-  render() {
-    const text = this.props.error ? 'Revert Error' : 'Error';
+const ErrorQueryButton = ({
+  handleClick,
+  error,
+}: {
+  handleClick: React.MouseEventHandler;
+  error: string;
+}) => {
+  const text = error ? 'Revert Error' : 'Error';
 
-    return <button onClick={this.props.handleClick}>{text}</button>;
-  }
-}
+  return <button onClick={handleClick}>{text}</button>;
+};
 
 export default ErrorQueryButton;
