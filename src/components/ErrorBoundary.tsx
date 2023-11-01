@@ -21,8 +21,8 @@ class ErrorBoundary extends React.Component<{ children?: React.ReactNode }, { ha
       // You can render any custom fallback UI
       return <h1>Something went wrong.</h1>;
     }
-    debugger;
 
+    console.log();
     return this.props.children;
   }
 }
