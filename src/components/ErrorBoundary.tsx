@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component<{ children?: React.ReactNode }, { ha
       return <h1>Something went wrong.</h1>;
     }
 
-    console.log();
+    debugger;
     return this.props.children;
   }
 }
