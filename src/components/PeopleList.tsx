@@ -1,5 +1,6 @@
 import { Person } from '../types/Person';
 import React from 'react';
+import PeopleListItem from './PeopleListItem';
 
 const PeopleList = ({
   people,
@@ -18,14 +19,14 @@ const PeopleList = ({
     return <div>Loading...</div>;
   }
 
-  if (people.length === 0) {
+  if (!people) {
     return <div>No such people with given name</div>;
   }
 
   return (
     <>
       {people.map((person) => (
-        <div key={person.name}>{person.name}</div>
+        <PeopleListItem key={person.name} person={person} />
       ))}
     </>
   );

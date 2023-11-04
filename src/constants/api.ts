@@ -3,7 +3,7 @@ export const HTTPS = 'https://';
 
 // swapi
 export const SWAPI_ROOT = 'swapi.dev/api/';
-export const SWAPI_PEOPLE = 'people';
+export const SWAPI_PEOPLE = 'people/';
 export const SWAPI_PARAM_PAGE = '/?page=';
 export const SWAPI_PARAM_SEARCH = '/?search=';
 
