@@ -5,17 +5,17 @@ import { Route, Routes } from 'react-router-dom';
 import PersonInfo from './components/PersonInfo';
 import { Person } from './types/Person';
 import { useFetching } from './hooks/useFetching';
-import { API_ERROR } from './constants/api';
 import PeopleService from './API/PeopleService';
-import Modal from './components/Modal';
 
 const App = () => {
   const [people, setPeople] = useState<Person[]>([]);
-  const [modalActive, setModalActive] = useState(true);
 
-  const [fetchPeople, isPeopleLoading, isPeopleError] = useFetching(async (url) => {
+  const [fetchPeople, isPeopleLoading, isPeopleError] = useFetching(async (url, error = false) => {
     let response;
-    if (url) {
+    url = url[0];
+    if (error) {
+      response = await PeopleService.getError();
+    } else if (url.length === 0) {
       response = await PeopleService.getAll();
     } else {
       response = await PeopleService.getAllWithSearch(url);
@@ -28,8 +28,8 @@ const App = () => {
   }, []);
 
   function handleErrorBtnClick() {
-    if (!isPeopleError) {
-      fetchPeople(API_ERROR);
+    if (isPeopleError.length === 0) {
+      fetchPeople('', true);
     } else {
       fetchPeople(localStorage.getItem('searchQuery') || '');
     }
@@ -53,22 +53,7 @@ const App = () => {
           />
         }
       >
-        <Route
-          path={'people/:id'}
-          element={
-            <Modal active={modalActive} setActive={setModalActive}>
-              <div
-                style={{
-                  border: '1px solid',
-                  padding: '100px',
-                  color: 'black',
-                }}
-              >
-                <PersonInfo />
-              </div>
-            </Modal>
-          }
-        />
+        <Route path={'people/:id'} element={<PersonInfo />} />
       </Route>
     </Routes>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-import withPersistence from './withPersistence';
 import Search from './Search';
 import ErrorQueryButton from './ErrorQueryButton';
 import PeopleList from './PeopleList';
@@ -19,8 +18,6 @@ const Layout = ({
   isPeopleError;
   handleErrorBtnClick;
 }) => {
-  const LocalStorageSearch = withPersistence('searchQuery', localStorage)(Search);
-
   return (
     <>
       <h1>People from SWAPI</h1>
@@ -29,7 +26,7 @@ const Layout = ({
           <div>
             <h2>Search</h2>
             <p>Enter smth to find people with correspond names, or empty query to get all people</p>
-            <LocalStorageSearch handleClickProp={handleSearchBtnClick} />
+            <Search handleClickProp={handleSearchBtnClick} />
           </div>
           <div>
             <h2>List</h2>

@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 
 export interface SearchProps {
-  initialValue: string | null;
-  saveValue: (value: string) => void;
   handleClickProp?: (value: string) => null;
   children?: React.ReactNode;
 }
 
-const Search = ({ initialValue, saveValue, handleClickProp }: SearchProps) => {
-  const [inputValue, setInputValue] = useState(initialValue || '');
+const Search = ({ handleClickProp }: SearchProps) => {
+  const [inputValue, setInputValue] = useState(localStorage.getItem('searchQuery') || '');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
+  };
+
+  const saveValue = (value: string) => {
+    localStorage.setItem('searchQuery', value);
   };
 
   const handleClick = () => {

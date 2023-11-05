@@ -19,7 +19,7 @@ const PeopleList = ({
     return <div>Loading...</div>;
   }
 
-  if (!people) {
+  if (!people || people.length === 0) {
     return <div>No such people with given name</div>;
   }
 
