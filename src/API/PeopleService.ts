@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_ERROR, API_PEOPLE, API_SEARCH } from '../constants/api';
+import { API_ERROR, API_PAGE, API_PEOPLE, API_SEARCH } from '../constants/api';
 
 export default class PeopleService {
   static async getAll() {
@@ -12,6 +12,10 @@ export default class PeopleService {
 
   static async getAllWithSearch(query: string) {
     return await axios.get(API_SEARCH + query);
+  }
+
+  static async getAllByPage(page: URLSearchParams) {
+    return await axios.get(API_PAGE + page);
   }
 
   static async getError() {

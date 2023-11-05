@@ -4,6 +4,7 @@ import ErrorQueryButton from './ErrorQueryButton';
 import PeopleList from './PeopleList';
 import { Outlet } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary';
+import Pagination from './Pagination';
 
 const Layout = ({
   handleSearchBtnClick,
@@ -11,12 +12,16 @@ const Layout = ({
   people,
   isPeopleError,
   handleErrorBtnClick,
+  page,
+  setPage,
 }: {
   handleSearchBtnClick;
   isPeopleLoading;
   people;
   isPeopleError;
   handleErrorBtnClick;
+  page;
+  setPage;
 }) => {
   return (
     <>
@@ -34,6 +39,7 @@ const Layout = ({
               <PeopleList loading={isPeopleLoading} people={people} error={isPeopleError} />
             </ErrorBoundary>
           </div>
+          <Pagination page={page} setPage={setPage} />
           <h2>Test error</h2>
           <ErrorQueryButton handleClick={handleErrorBtnClick} error={isPeopleError} />
         </div>

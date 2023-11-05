@@ -17,7 +17,7 @@ const Modal = ({
       className={`modal ${active ? 'active' : ''}`}
       onClick={() => {
         setActive(false);
-        navigate('/');
+        navigate(-1);
       }}
     >
       <div className="modal__content" onClick={(e) => e.stopPropagation()}>

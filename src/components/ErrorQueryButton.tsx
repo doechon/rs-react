@@ -7,7 +7,7 @@ const ErrorQueryButton = ({
   handleClick: React.MouseEventHandler;
   error: string;
 }) => {
-  const text = error ? 'Revert Error' : 'Error';
+  const text = error ? 'Error already happen' : 'Error';
 
   return <button onClick={handleClick}>{text}</button>;
 };
