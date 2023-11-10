@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from './Search';
 import ErrorQueryButton from './ErrorQueryButton';
-import PeopleList from './PeopleList';
+import PeopleList from './PeopleList/PeopleList';
 import { Outlet } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary';
 import Pagination from './Pagination';

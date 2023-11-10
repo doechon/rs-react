@@ -10,3 +10,4 @@ to create appropriate component with loading-error-fetching logic
 * https://codepen.io/gaearon/pen/wqvxGa?editors=0010
 * https://youtu.be/ApftxkYnXdo?si=i-_8ktXlbZt79P28
 * https://youtu.be/i2Yf7JZonB4?si=JxpC-pQ_1aCkxdmw
+* https://www.pluralsight.com/guides/how-to-test-react-components-in-typescript

@@ -1,6 +1,6 @@
-import { Person } from '../types/Person';
+import { Person } from '../../types/Person';
 import React from 'react';
-import PeopleListItem from './PeopleListItem';
+import PeopleListItem from '../PeopleListItem';
 
 const PeopleList = ({
   people,
